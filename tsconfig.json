@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "types": ["node"],
+    "paths": {
+      "@murkio/html": ["../html/src/index.ts"],
+      "@murkio/react": ["../react/src/index.ts"],
+      "@murkio/node": ["../node/src/index.ts"]
+    }
+  },
+  "include": ["src", "test", "tsup.config.ts", "vitest.config.ts"]
+}

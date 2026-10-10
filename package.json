@@ -1,0 +1,38 @@
+{
+  "name": "@murkio/next",
+  "version": "0.1.0",
+  "description": "Murkio identity for Next.js: the login canvas and components for the client, auth() for server components and a middleware that protects routes.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js",
+      "require": "./dist/server.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@murkio/node": "0.1.0",
+    "@murkio/react": "0.1.0"
+  },
+  "peerDependencies": {
+    "next": ">=14",
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "next": "15.5.26"
+  }
+}
