@@ -45,3 +45,17 @@ export const config = { matcher: ['/dashboard/:path*'] };
 `murkioMiddleware` also refreshes an expired session cookie with a short handshake
 page, so server components see the user right after the 15-minute access token
 expires. See `@murkio/node` for the cookie, CSRF and revocation rules.
+
+## Developing
+
+This repository is a git submodule of the Murkio identity service
+(`libs/external/next`) and is developed from there: the JavaScript packages share one
+npm workspace, and the tests read the contract, the vectors and the fixtures every Murkio
+SDK shares (`libs/spec`).
+
+```sh
+# in libs/ of the service repository, cloned with --recurse-submodules
+npm ci
+npm run build
+npm test
+```
