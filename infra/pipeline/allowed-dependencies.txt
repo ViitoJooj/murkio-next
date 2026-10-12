@@ -1,0 +1,8 @@
+# The runtime dependencies this SDK ships with, one per line, each with the
+# reason it is needed. infra/pipeline/verify_dependencies.py fails when the
+# manifest and this list disagree.
+
+@murkio/node  # verifies the session in middleware, server components and route handlers
+@murkio/react # the client components and hooks this package re-exports for the App Router
+next          # peer: the application's own Next.js
+react         # peer: the application's own React
