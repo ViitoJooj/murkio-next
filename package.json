@@ -3,17 +3,31 @@
   "version": "0.1.0",
   "description": "Murkio identity for Next.js: the login canvas and components for the client, auth() for server components and a middleware that protects routes.",
   "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ViitoJooj/murkio-next.git"
+  },
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     },
     "./server": {
-      "types": "./dist/server.d.ts",
-      "import": "./dist/server.js",
-      "require": "./dist/server.cjs"
+      "import": {
+        "types": "./dist/server.d.ts",
+        "default": "./dist/server.js"
+      },
+      "require": {
+        "types": "./dist/server.d.cts",
+        "default": "./dist/server.cjs"
+      }
     }
   },
   "files": [
@@ -21,18 +35,41 @@
   ],
   "scripts": {
     "build": "tsup",
+    "prepare": "npm run build",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit -p tsconfig.json"
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "lint": "biome lint --error-on-warnings .",
+    "package:check": "publint --strict",
+    "prepublishOnly": "node scripts/check-publishable.mjs"
   },
   "dependencies": {
-    "@murkio/node": "0.1.0",
-    "@murkio/react": "0.1.0"
+    "@murkio/node": "github:ViitoJooj/murkio-node#525926179c7db05c691d8c66c7fbf5e1cf2d802f",
+    "@murkio/react": "github:ViitoJooj/murkio-react#1bc61557d8fcacea2851b985679533a5c3e82aa0"
   },
   "peerDependencies": {
     "next": ">=14",
     "react": ">=18"
   },
   "devDependencies": {
-    "next": "15.5.26"
+    "@biomejs/biome": "2.5.15",
+    "@types/node": "22.20.4",
+    "@types/react": "19.3.0",
+    "next": "16.4.0",
+    "publint": "0.3.25",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "tsup": "8.5.1",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "allowScripts": {
+    "esbuild": false,
+    "github:ViitoJooj/murkio-node#525926179c7db05c691d8c66c7fbf5e1cf2d802f": true,
+    "github:ViitoJooj/murkio-react#1bc61557d8fcacea2851b985679533a5c3e82aa0": true
   }
 }

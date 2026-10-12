@@ -71,6 +71,8 @@ export async function MurkioBootstrap() {
     type: 'application/json',
     id: 'murkio-bootstrap',
     'data-generated-at': String(Date.now()),
+    // murkio:allow dangerous-sink safeJson escapes <, >, & and the line separators, so the JSON cannot end the script tag
+    // biome-ignore lint/security/noDangerouslySetInnerHtml: safeJson escapes <, >, & and the line separators, so the JSON cannot end the script tag
     dangerouslySetInnerHTML: { __html: safeJson(bootstrap) },
   });
 }
